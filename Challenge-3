@@ -1,0 +1,19 @@
+import jmespath
+import json
+
+def get_value(object, key):
+    new_key=key.replace('/','.')
+    value=jmespath.search(new_key ,object)
+    return value
+
+
+if __name__=="__main__":
+
+    object = input('Enter your object:')
+    object=json.loads(object)
+    key = input('Enter your key:')
+   
+    #object = {"a":{"b":{"c":"d"}}}
+    #key = 'a/b/c'
+       
+    print(get_value(object, key))
